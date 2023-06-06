@@ -1,0 +1,38 @@
+<div class="h-screen flex flex-col items-center">
+  <h2><%= t('edit_profile') %></h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <% if resource.doctor? %>
+      <%=  f.fields_for :userable_attributes do |userable_form|%>
+        <div class="mb4">
+          <%= userable_form.label :avatar, class: "text-gray-700 font-bold mb-2" %> <br />
+          <%= userable_form.file_field :avatar, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" %>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="mb4">
+      <%= f.label :phone, class: "text-gray-700 font-bold mb-2" %><br />
+      <%= f.telephone_field :phone, autofocus: true, autocomplete: "phone", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" %> <br />
+      <%= f.label :full_name, class: "text-gray-700 font-bold mb-2" %> <br />
+      <%= f.text_field :full_name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" %>
+      <%= f.label :password, class: "text-gray-700 font-bold mb-2" %> <i>(<%= t('blank') %>)</i><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" %> <br />
+      <% if @minimum_password_length %>
+        <br />
+        <em><%= t('devise.registrations.min_characters', length: @minimum_password_length) %></em>
+      <% end %>
+      <%= f.label :password_confirmation, class: "text-gray-700 font-bold mb-2" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" %> <br />
+      <%= f.label :current_password, class: "text-gray-700 font-bold mb-2" %> <i>(<%= t('password_confirmation') %>)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700" %>
+    </div>
+    <%= f.submit "Update", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+  <% end %>
+  <%= button_to t('account.delete'), registration_path(resource_name), class: "px-4 py-2 font-semibold text-sm bg-red-500 text-white rounded-full shadow-sm",
+                                                                       data: { confirm: t('account.confirm'), turbo_confirm: t('account.confirm') },
+                                                                       method: :delete %> <br />
+
+  <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+    <%= link_to t('navigation.home_page'), root_path %>
+  </button>
+</div>

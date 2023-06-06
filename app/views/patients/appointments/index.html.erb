@@ -1,0 +1,43 @@
+<h2> Doctor </h2>
+<% if @appointments.empty? %>
+  <h1> <%= t('appointments.no_appointments') %> </h1>
+<% else %>
+  <table class="border-collapse table-fixed w-full text-sm">
+    <thead>
+      <tr>
+        <th class= "border-b text-left"> </th>
+        <th class= "border-b text-left">
+          <%= t('appointments.doctors_name') %>
+        </th>
+        <th class= "border-b text-left">
+          <%= t('appointments.status') %>
+        </th>
+        <th class= "border-b text-left">
+          <%= t('appointments.date') %>
+        </th>
+        <th class= "border-b text-left"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @appointments.each do |appointment| %>
+        <tr>
+          <td> <%= image_tag appointment.doctor.avatar, height: 100, width: 100 %>
+          <td>
+            <%= appointment.doctor.user.full_name %>
+          </td>
+          <td> <%= appointment.status %> </td>
+          <td> <%= appointment.date %> </td>
+          <td>
+            <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+              <%= link_to t('appointments.details'), patients_appointment_path(appointment) %>
+            </button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+  <%= link_to t('navigation.home_page'), root_path %>
+</button>

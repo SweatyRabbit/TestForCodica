@@ -1,0 +1,17 @@
+<h1> <%= t('welcome') %></h1>
+<% if current_user.patient? %>
+  <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+    <%= link_to t('all_doctors'), patients_doctors_path %>
+  </button>
+  <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+    <%= link_to t('all_appointments'), patients_appointments_path %>
+  </button>
+<% else %>
+  <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+    <%= link_to t('all_appointments'), doctors_appointments_path %>
+  </button>
+<% end %>
+
+<button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+  <%= link_to t('edit_profile'), edit_user_registration_path %>
+</button>

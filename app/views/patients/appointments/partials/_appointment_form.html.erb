@@ -1,0 +1,23 @@
+<div class="h-screen flex flex-col items-center">
+  <%= form_with model: appointment, id: dom_id(appointment), url: patients_appointments_path, data: { turbo_frame: dom_id(appointment) },
+                class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" do |f| %>
+    <%= f.hidden_field :doctor_id %>
+    <% if appointment.errors.any? %>
+      <ul>
+        <% appointment.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= f.date_field :date, data: { provide: 'datapicker' } %>
+    <div class="flex items-center justify-between">
+      <%= f.submit t('appointments.create'), class: "px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm" %>
+    </div>
+  <% end %>
+
+  <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+    <%= link_to t('navigation.home_page'), root_path %>
+  </button>
+</div>

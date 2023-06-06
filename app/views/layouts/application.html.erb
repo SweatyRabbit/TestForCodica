@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      <%= t('title') %>
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body>
+    <% flash.each do |_name, message| %>
+      <div>
+        <%= message %>
+      </div>
+    <% end %>
+    <% if current_user %>
+      <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+        <%= link_to t('user.log_out'), destroy_user_session_path, data: { turbo_method: :delete } %>
+      </button>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

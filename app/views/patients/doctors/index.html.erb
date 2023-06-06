@@ -1,0 +1,41 @@
+<h1>  </h1>
+<%= link_to "All", patients_doctors_path %>
+<% Category.all.each do |category| %>
+  <%= link_to "#{ category.name }", patients_doctors_path(filter_by: category.name)%>
+<% end %>
+<table class="border-collapse table-fixed w-full text-sm">
+  <thead>
+    <tr>
+      <th class= "border-b text-left"> </th>
+      <th class= "border-b text-left"> Doctor's name </th>
+      <th class= "border-b text-left"> Category </th>
+      <th class= "border-b text-left"> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @doctors.each do |doctor| %>
+      <tr>
+        <td>
+          <%= image_tag doctor.avatar, height: 100, width: 100 %>
+        </td>
+        <td>
+          <%= doctor.user.full_name %>
+        </td>
+        <td> <%= doctor.category.name %> </td>
+        <td>
+          <button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+            <%= link_to 'Create an appointment', new_patients_appointment_path(doctor_id: doctor.id) %>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+  <%= link_to 'Back to home page', root_path %>
+</button>
+<button class="px-4 py-2 font-semibold text-sm bg-cyan-500 text-white rounded-full shadow-sm">
+  <%= link_to 'Show all appointments', patients_appointments_path %>
+</button>

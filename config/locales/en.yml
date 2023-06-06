@@ -1,0 +1,39 @@
+en:
+  welcome: "Welcome!"
+  title: TestForCodica
+
+  all_appointments: Show all appointments
+  edit_profile: Edit profile
+
+  navigation:
+    log_in: Log In
+    sign_up: Sign Up
+    log_out: Log Out
+    home_page: Home page
+
+  account:
+    delete: Delete my account
+    confirm: Are you sure?
+
+  recommendation:
+    success: Recommendation was given
+
+  blank: leave blank if you don't want to change it
+  password_confirmation: we need your current password to confirm your changes
+
+  appointments:
+    success: Appointment was successfully created
+    no_appointments: There are no appointments yet!
+    doctors_name: "Doctor's name"
+    patients_name: "Patient's name"
+    status: Status
+    date: Date
+    details: Details
+    create: Create
+    create_recommendation: Create recommendation
+    recommendation: Recommendation
+
+  no_permission: You don`t have such permissions
+
+  patients:
+    all_doctors: Show all doctors
