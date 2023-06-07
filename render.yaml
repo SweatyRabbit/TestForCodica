@@ -24,3 +24,5 @@ services:
         sync: false
       - key: AWS_BUCKETNAME
         sync: false
+      - key: RACK_ENV
+        value: production
