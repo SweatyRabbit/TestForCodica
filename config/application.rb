@@ -14,7 +14,7 @@ require 'action_mailbox/engine'
 require 'action_text/engine'
 require 'action_view/railtie'
 require 'action_cable/engine'
-require 'dotenv/load'
+require 'dotenv/load' unless Rails.env.production?
 
 Bundler.require(*Rails.groups)
 
