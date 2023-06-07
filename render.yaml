@@ -1,18 +1,18 @@
 databases:
-  - name: test-for-codica
-    databaseName: TestForCodica
-    user: postgres
+  - name: test_for_codica
+    databaseName: test_for_codica
+    user: test_for_codica
 
 services:
   - type: web
-    name: test-for-codica
+    name: test_for_codica
     runtime: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: test-for-codica
+          name: test_for_codica
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
