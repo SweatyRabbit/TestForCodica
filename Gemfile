@@ -9,7 +9,6 @@ gem 'aws-sdk-s3', '~> 1.123', '>= 1.123.1'
 gem 'date_picker', '~> 0.0.9'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'image_processing', '~> 1.12', '>= 1.12.2'
-gem 'pagy', '~> 6.0', '>= 6.0.4'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.5'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]

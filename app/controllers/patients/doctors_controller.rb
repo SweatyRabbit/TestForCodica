@@ -2,11 +2,8 @@
 
 module Patients
   class DoctorsController < BaseController
-    include Pagy::Backend
-
     def index
-      @doctors = Doctor.all
-      @pagy, @doctors = pagy(prepared_doctors)
+      @doctors = prepared_doctors
     end
 
     private
